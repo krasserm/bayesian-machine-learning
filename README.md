@@ -20,6 +20,6 @@ implementation with Keras.
 
 - [Conditional generation via Bayesian optimization in latent space](variational_autoencoder_opt.ipynb). Describes an approach
 for conditionally generating outputs with desired properties by doing Bayesian optimization in latent space of variational 
-auto-encoders. Example application implemented with Keras.
+auto-encoders. Example application implemented with Keras and GPyOpt.
 
 - ...
