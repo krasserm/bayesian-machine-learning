@@ -45,7 +45,7 @@ def create_decoder(latent_dim):
     '''
     decoder_input = layers.Input(shape=(latent_dim,), name='t')
     
-    x = layers.Dense(np.prod(12544), activation='relu')(decoder_input)
+    x = layers.Dense(12544, activation='relu')(decoder_input)
     x = layers.Reshape((14, 14, 64))(x)
     x = layers.Conv2DTranspose(32, 3, padding='same', activation='relu', strides=(2, 2))(x)
     x = layers.Conv2D(1, 3, padding='same', activation='sigmoid', name='image')(x)
