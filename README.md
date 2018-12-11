@@ -14,6 +14,9 @@ with plain NumPy/SciPy as well as with libraries scikit-optimize and GPyOpt. Hyp
 from expectation maximization (EM) algorithm via variational inference to stochastic variational inference. Example 
 implementation with Keras.
 
+- [Topic modeling with PyMC3](topic_modeling_pymc3.ipynb). An introduction to topic models and their implementation with the
+probabilistic programming framework [PyMC3](https://docs.pymc.io/).
+
 - ...
 
 ### Applications
