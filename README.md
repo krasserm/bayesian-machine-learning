@@ -2,8 +2,6 @@
 
 This repository is a collection of notebooks covering various topics of Bayesian methods for machine learning.
 
-### Basics
-
 - [Bayesian regression with linear basis function models](bayesian_linear_regression.ipynb). Introduction to Bayesian
 linear regression. Implementation from scratch with plain NumPy as well as usage of scikit-learn for comparison.
 
@@ -14,12 +12,11 @@ plain NumPy/SciPy as well as with libraries scikit-learn and GPy.
 with plain NumPy/SciPy as well as with libraries scikit-optimize and GPyOpt. Hyperparameter tuning as application example.  
 
 - [Variational auto-encoder](variational_autoencoder.ipynb). A guide to variational auto-encoders described as a journey
-from expectation maximization (EM) algorithm via variational inference to stochastic variational inference. Example 
+from expectation maximization (EM) algorithm over variational inference to stochastic variational inference. Example 
 implementation with Keras.
 
-- ...
-
-### Applications
+- [Variational Bayesian learning of neural network parameters](bayesian_neural_networks.ipynb). Demonstrates how to 
+  implement and train a Bayesian neural network using a variational inference approach. Example implementation with Keras. 
 
 - [Conditional generation via Bayesian optimization in latent space](variational_autoencoder_opt.ipynb). Describes an approach
 for conditionally generating outputs with desired properties by doing Bayesian optimization in latent space of variational 
@@ -31,5 +28,3 @@ Keras.
 
 - [Topic modeling with PyMC3](topic_modeling_pymc3.ipynb). An introduction to topic models and their implementation with the
 probabilistic programming library [PyMC3](https://docs.pymc.io/).
-
-- ...
