@@ -15,8 +15,8 @@ with plain NumPy/SciPy as well as with libraries scikit-optimize and GPyOpt. Hyp
 from expectation maximization (EM) algorithm over variational inference to stochastic variational inference. Example 
 implementation with Keras.
 
-- [Variational Bayesian learning of neural network parameters](bayesian_neural_networks.ipynb). Demonstrates how to 
-  implement and train a Bayesian neural network using a variational inference approach. Example implementation with Keras. 
+- [Bayesian learning of neural network parameter distributions](bayesian_neural_networks.ipynb). Demonstrates how to 
+implement and train a Bayesian neural network using a variational inference approach. Example implementation with Keras. 
 
 - [Conditional generation via Bayesian optimization in latent space](variational_autoencoder_opt.ipynb). Describes an approach
 for conditionally generating outputs with desired properties by doing Bayesian optimization in latent space of variational 
