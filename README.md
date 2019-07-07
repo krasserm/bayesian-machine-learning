@@ -8,10 +8,12 @@ implement and train a Bayesian neural network using a variational inference appr
 - [Bayesian regression with linear basis function models](bayesian_linear_regression.ipynb). Introduction to Bayesian
 linear regression. Implementation from scratch with plain NumPy as well as usage of scikit-learn for comparison.
 
-- [Gaussian processes](gaussian_processes.ipynb). Introduction to Gaussian processes. Example implementations with 
-plain NumPy/SciPy as well as with libraries scikit-learn and GPy.
+- [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/krasserm/bayesian-machine-learning/blob/master/gaussian_processes.ipynb)
+  [Gaussian processes](gaussian_processes.ipynb). Introduction to Gaussian processes. Example implementations with 
+plain NumPy/SciPy as well as with libraries scikit-learn and GPy. 
 
-- [Bayesian optimization](bayesian_optimization.ipynb). Introduction to Bayesian optimization. Example implementations 
+- [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/krasserm/bayesian-machine-learning/blob/master/bayesian_optimization.ipynb)
+  [Bayesian optimization](bayesian_optimization.ipynb). Introduction to Bayesian optimization. Example implementations 
 with plain NumPy/SciPy as well as with libraries scikit-optimize and GPyOpt. Hyperparameter tuning as application example.  
 
 - [Variational auto-encoder](variational_autoencoder.ipynb). A guide to variational auto-encoders described as a journey
