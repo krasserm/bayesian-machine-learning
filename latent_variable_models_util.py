@@ -1,3 +1,4 @@
+import daft
 import numpy as np
 import matplotlib.pyplot as plt
 
@@ -43,3 +44,17 @@ def plot_densities(X, mu, sigma, alpha=0.5):
 
     for mu_c, sigma_c in zip(mu, sigma):
         plt.contour(grid_x, grid_y, mvn(mu_c, sigma_c).pdf(grid), colors='grey', alpha=alpha)
+
+
+def plot_gmm_plate(filename="gmm.png", dpi=100):
+    pgm = daft.PGM([3.0, 2.5], origin=(0, 0))
+    pgm.add_node(daft.Node("theta", r"$\mathbf{\theta}$", 1, 2, fixed=True))
+    pgm.add_node(daft.Node("ti", r"$\mathbf{t}_i$", 1, 1))
+    pgm.add_node(daft.Node("xi", r"$\mathbf{x}_i$", 2, 1, observed=True))
+    pgm.add_edge("theta", "ti")
+    pgm.add_edge("theta", "xi")
+    pgm.add_edge("ti", "xi")
+    pgm.add_plate(daft.Plate([0.4, 0.5, 2.2, 1.0], label=r"$N$"))
+    ax = pgm.render()
+    ax.text(0.8, 0.5, 'Gaussian mixture model')
+    pgm.savefig(filename, dpi=dpi)
