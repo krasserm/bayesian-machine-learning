@@ -1,8 +1,7 @@
 ## Bayesian machine learning notebooks
 
-This repository is a collection of notebooks about various topics of *Bayesian methods for machine learning*. The links in
-the following list display the notebooks of this repository via [nbviewer](https://nbviewer.jupyter.org/) 
-to ensure a proper rendering of formulas.
+This repository is a collection of notebooks on various *Bayesian Machine Learning* topics. The following links display 
+the notebooks via [nbviewer](https://nbviewer.jupyter.org/) to ensure a proper rendering of formulas.
 
 
 - [Latent variable models - part 1: Gaussian mixture models and the EM algorithm](https://nbviewer.jupyter.org/github/krasserm/bayesian-machine-learning/blob/master/latent_variable_models_part_1.ipynb).
