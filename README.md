@@ -3,11 +3,13 @@
 This repository is a collection of notebooks on various *Bayesian Machine Learning* topics. The following links display 
 the notebooks via [nbviewer](https://nbviewer.jupyter.org/) to ensure a proper rendering of formulas.
 
-- [Latent variable models - part 1: Gaussian mixture models and the EM algorithm](https://nbviewer.jupyter.org/github/krasserm/bayesian-machine-learning/blob/master/latent_variable_models_part_1.ipynb).
+- [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/krasserm/bayesian-machine-learning/blob/master/latent_variable_models_part_1.ipynb)
+  [Latent variable models - part 1: Gaussian mixture models and the EM algorithm](https://nbviewer.jupyter.org/github/krasserm/bayesian-machine-learning/blob/master/latent_variable_models_part_1.ipynb).
   Introduction to the expectation maximization (EM) algorithm and its application to Gaussian mixture models. Example
   implementation with plain NumPy/SciPy and scikit-learn for comparison.
 
-- [Latent variable models - part 2: Stochastic variational inference and variational autoencoders](https://nbviewer.jupyter.org/github/krasserm/bayesian-machine-learning/blob/master/latent_variable_models_part_2.ipynb). 
+- [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/krasserm/bayesian-machine-learning/blob/master/latent_variable_models_part_2.ipynb)
+  [Latent variable models - part 2: Stochastic variational inference and variational autoencoders](https://nbviewer.jupyter.org/github/krasserm/bayesian-machine-learning/blob/master/latent_variable_models_part_2.ipynb). 
   Introduction to stochastic variational inference with variational autoencoder as application example. Implementation 
   with Tensorflow 2.x.
 
