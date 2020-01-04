@@ -1,6 +1,6 @@
 ## Bayesian machine learning notebooks
 
-This repository is a collection of notebooks on various *Bayesian Machine Learning* topics. The following links display 
+This repository is a collection of notebooks about *Bayesian Machine Learning*. The following links display 
 the notebooks via [nbviewer](https://nbviewer.jupyter.org/) to ensure a proper rendering of formulas.
 
 - [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/krasserm/bayesian-machine-learning/blob/master/latent_variable_models_part_1.ipynb)
