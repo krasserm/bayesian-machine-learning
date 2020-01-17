@@ -36,6 +36,3 @@ the notebooks via [nbviewer](https://nbviewer.jupyter.org/) to ensure a proper r
 - [Conditional generation via Bayesian optimization in latent space](https://nbviewer.jupyter.org/github/krasserm/bayesian-machine-learning/blob/master/variational_autoencoder_opt.ipynb). 
   Describes an approach for conditionally generating outputs with desired properties by doing Bayesian optimization in 
   latent space of variational auto-encoders. Example application implemented with Keras and GPyOpt.
-
-- [Topic modeling with PyMC3](https://nbviewer.jupyter.org/github/krasserm/bayesian-machine-learning/blob/master/topic_modeling_pymc3.ipynb). 
-  An introduction to topic models and their implementation with the probabilistic programming library [PyMC3](https://docs.pymc.io/).
