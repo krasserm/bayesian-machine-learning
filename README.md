@@ -18,6 +18,9 @@ the notebooks via [nbviewer](https://nbviewer.jupyter.org/) to ensure a proper r
 
 - [Bayesian regression with linear basis function models](https://nbviewer.jupyter.org/github/krasserm/bayesian-machine-learning/blob/master/bayesian_linear_regression.ipynb). Introduction to Bayesian
   linear regression. Implementation from scratch with plain NumPy as well as usage of scikit-learn for comparison.
+  
+  - [Implementation with PyMC4](https://nbviewer.jupyter.org/github/krasserm/bayesian-machine-learning/blob/master/bayesian_linear_regression_pymc4.ipynb).
+  - [Implementation with PyMC3](https://nbviewer.jupyter.org/github/krasserm/bayesian-machine-learning/blob/master/bayesian_linear_regression_pymc3.ipynb).
 
 - [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/krasserm/bayesian-machine-learning/blob/master/gaussian_processes.ipynb)
   [Gaussian processes](https://nbviewer.jupyter.org/github/krasserm/bayesian-machine-learning/blob/master/gaussian_processes.ipynb). 
