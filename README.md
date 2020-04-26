@@ -7,8 +7,8 @@ PyMC3 and PyMC4 implementations are now available for some notebooks (more plann
 - [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/krasserm/bayesian-machine-learning/blob/master/latent_variable_models_part_1.ipynb)
   [Latent variable models - part 1: Gaussian mixture models and the EM algorithm](https://nbviewer.jupyter.org/github/krasserm/bayesian-machine-learning/blob/master/latent_variable_models_part_1.ipynb).
   Introduction to the expectation maximization (EM) algorithm and its application to Gaussian mixture models. Example
-  implementation with plain NumPy/SciPy and scikit-learn for comparison. Further implementation with 
-  [PyMC3](https://nbviewer.jupyter.org/github/krasserm/bayesian-machine-learning/blob/master/latent_variable_models_part_1_pymc3.ipynb).
+  implementation with plain NumPy/SciPy and scikit-learn for comparison (see also 
+  [PyMC3 implementation](https://nbviewer.jupyter.org/github/krasserm/bayesian-machine-learning/blob/master/latent_variable_models_part_1_pymc3.ipynb)).
 
 - [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/krasserm/bayesian-machine-learning/blob/master/latent_variable_models_part_2.ipynb)
   [Latent variable models - part 2: Stochastic variational inference and variational autoencoders](https://nbviewer.jupyter.org/github/krasserm/bayesian-machine-learning/blob/master/latent_variable_models_part_2.ipynb). 
@@ -19,10 +19,9 @@ PyMC3 and PyMC4 implementations are now available for some notebooks (more plann
   implement and train a Bayesian neural network using a variational inference approach. Example implementation with Keras. 
 
 - [Bayesian regression with linear basis function models](https://nbviewer.jupyter.org/github/krasserm/bayesian-machine-learning/blob/master/bayesian_linear_regression.ipynb). Introduction to Bayesian
-  linear regression. Implementation from scratch with plain NumPy as well as usage of scikit-learn for comparison.
-  Further implementations with 
-  [PyMC4](https://nbviewer.jupyter.org/github/krasserm/bayesian-machine-learning/blob/master/bayesian_linear_regression_pymc4.ipynb) and
-  [PyMC3](https://nbviewer.jupyter.org/github/krasserm/bayesian-machine-learning/blob/master/bayesian_linear_regression_pymc3.ipynb).
+  linear regression. Implementation from scratch with plain NumPy as well as usage of scikit-learn for comparison (see also 
+  [PyMC4 implementation](https://nbviewer.jupyter.org/github/krasserm/bayesian-machine-learning/blob/master/bayesian_linear_regression_pymc4.ipynb) and 
+  [PyMC3 implementation](https://nbviewer.jupyter.org/github/krasserm/bayesian-machine-learning/blob/master/bayesian_linear_regression_pymc3.ipynb)).
 
 - [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/krasserm/bayesian-machine-learning/blob/master/gaussian_processes.ipynb)
   [Gaussian processes](https://nbviewer.jupyter.org/github/krasserm/bayesian-machine-learning/blob/master/gaussian_processes.ipynb). 
