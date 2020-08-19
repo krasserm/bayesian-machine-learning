@@ -16,7 +16,8 @@ PyMC3 and PyMC4 implementations are now available for some notebooks (more plann
   with Tensorflow 2.x.
 
 - [Variational inference in Bayesian neural networks](https://nbviewer.jupyter.org/github/krasserm/bayesian-machine-learning/blob/master/bayesian_neural_networks.ipynb). Demonstrates how to 
-  implement and train a Bayesian neural network using a variational inference approach. Example implementation with Keras. 
+  implement and train a Bayesian neural network using a variational inference approach. Example implementation with Keras (see also 
+  [PyMC4 implementation](https://github.com/krasserm/bayesian-machine-learning/blob/master/bayesian_neural_networks_pymc4.ipynb)).
 
 - [Bayesian regression with linear basis function models](https://nbviewer.jupyter.org/github/krasserm/bayesian-machine-learning/blob/master/bayesian_linear_regression.ipynb). Introduction to Bayesian
   linear regression. Implementation from scratch with plain NumPy as well as usage of scikit-learn for comparison (see also 
