@@ -1,5 +1,7 @@
 ## Bayesian machine learning notebooks
 
+[![DOI](https://zenodo.org/badge/125869131.svg)](https://zenodo.org/badge/latestdoi/125869131)
+
 This repository is a collection of notebooks about *Bayesian Machine Learning*. The following links display 
 the notebooks via [nbviewer](https://nbviewer.jupyter.org/) to ensure a proper rendering of formulas. **Update:** 
 PyMC3 and PyMC4 implementations are now available for some notebooks (more planned).
