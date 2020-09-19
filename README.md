@@ -3,7 +3,11 @@
 [![DOI](https://zenodo.org/badge/125869131.svg)](https://zenodo.org/badge/latestdoi/125869131)
 
 This repository is a collection of notebooks related to *Bayesian Machine Learning*. The following links display 
-the notebooks via [nbviewer](https://nbviewer.jupyter.org/) to ensure a proper rendering of formulas.
+some of the notebooks via [nbviewer](https://nbviewer.jupyter.org/) to ensure a proper rendering of formulas.
+
+- [Reliable uncertainty estimates for neural network predictions](https://github.com/krasserm/bayesian-machine-learning/blob/dev/noise-contrastive-priors/ncp.ipynb). 
+  Applies noise contrastive priors to Bayesian neural networks to get more reliable uncertainty estimates for OOD data.
+  Implemented with Tensorflow 2 and Tensorflow Probability.
 
 - [Variational inference in Bayesian neural networks](https://nbviewer.jupyter.org/github/krasserm/bayesian-machine-learning/blob/dev/bayesian-neural-networks/bayesian_neural_networks.ipynb). 
   Demonstrates how to implement a Bayesian neural network and variational inference of network parameters. Example implementation 
