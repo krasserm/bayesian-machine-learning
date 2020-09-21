@@ -1,3 +1,8 @@
+## New default branch 
+
+**Branch [master](https://github.com/krasserm/bayesian-machine-learning/tree/master) is no longer the default branch in 
+this repository. Please use branch [dev](https://github.com/krasserm/bayesian-machine-learning/tree/dev) instead.** 
+
 ## Bayesian machine learning notebooks
 
 [![DOI](https://zenodo.org/badge/125869131.svg)](https://zenodo.org/badge/latestdoi/125869131)
