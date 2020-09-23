@@ -34,7 +34,7 @@ the notebooks via [nbviewer](https://nbviewer.jupyter.org/) to ensure a proper r
 - [Bayesian regression with linear basis function models](https://nbviewer.jupyter.org/github/krasserm/bayesian-machine-learning/blob/dev/bayesian-linear-regression/bayesian_linear_regression.ipynb). 
   Introduction to Bayesian linear regression. Implementation from scratch with plain NumPy as well as usage of scikit-learn 
   for comparison (see also 
-  [PyMC4 implementation](https://nbviewer.jupyter.org/github/krasserm/bayesian-machine-learning/blob/maste/bayesian-linear-regressionr/bayesian_linear_regression_pymc4.ipynb) and 
+  [PyMC4 implementation](https://nbviewer.jupyter.org/github/krasserm/bayesian-machine-learning/blob/dev/bayesian-linear-regression/bayesian_linear_regression_pymc4.ipynb) and 
   [PyMC3 implementation](https://nbviewer.jupyter.org/github/krasserm/bayesian-machine-learning/blob/dev/bayesian-linear-regression/bayesian_linear_regression_pymc3.ipynb)).
 
 - [Deep feature consistent variational autoencoder](https://nbviewer.jupyter.org/github/krasserm/bayesian-machine-learning/blob/dev/autoencoder-applications/variational_autoencoder_dfc.ipynb). 
