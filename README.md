@@ -2,10 +2,10 @@
 
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.4050922.svg)](https://doi.org/10.5281/zenodo.4050922)
 
-This repository is a collection of notebooks related to *Bayesian Machine Learning*. The following links display 
+This repository is a collection of notebooks about *Bayesian Machine Learning*. The following links display 
 some of the notebooks via [nbviewer](https://nbviewer.jupyter.org/) to ensure a proper rendering of formulas.
 
-- [Reliable uncertainty estimates for neural network predictions](https://github.com/krasserm/bayesian-machine-learning/blob/dev/noise-contrastive-priors/ncp.ipynb). 
+- [Reliable uncertainty estimates for neural network predictions](https://nbviewer.jupyter.org/github/krasserm/bayesian-machine-learning/blob/dev/noise-contrastive-priors/ncp.ipynb). 
   Applies noise contrastive priors to Bayesian neural networks to get more reliable uncertainty estimates for OOD data.
   Implemented with Tensorflow 2 and Tensorflow Probability.
 
