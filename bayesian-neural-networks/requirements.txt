@@ -1,0 +1,6 @@
+# Dependencies for bayesian_neural_networks.ipynb
+keras==2.2.4
+tensorflow==1.12
+tensorflow_probability==0.5.0
+matplotlib==3.3.2
+tqdm==4.50.2
