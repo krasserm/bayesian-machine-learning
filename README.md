@@ -17,7 +17,7 @@ some of the notebooks via [nbviewer](https://nbviewer.jupyter.org/) to ensure a 
   scikit-learn and GPy ([requirements.txt](gaussian-processes/requirements.txt)). 
 
 - [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/krasserm/bayesian-machine-learning/blob/dev/gaussian-processes/gaussian_processes_classification.ipynb)
-  [Gaussian processes for classification](https://nbviewer.jupyter.org/github/krasserm/bayesian-machine-learning/blob/dev/gaussian-processes/gaussian_processes_classification.ipynb). 
+  [Gaussian processes for classification](https://github.com/krasserm/bayesian-machine-learning/blob/dev/gaussian-processes/gaussian_processes_classification.ipynb). 
   Introduction to Gaussian processes for classification. Example implementations with plain NumPy/SciPy as well as with 
   scikit-learn ([requirements.txt](gaussian-processes/requirements.txt)). 
 
