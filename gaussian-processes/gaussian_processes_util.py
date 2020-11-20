@@ -1,7 +1,7 @@
 import numpy as np
 import matplotlib.pyplot as plt
 
-from matplotlib import cm
+from matplotlib import animation, cm
 from mpl_toolkits.mplot3d import Axes3D
 
 
@@ -64,3 +64,53 @@ def plot_db_2D(grid_x, grid_y, grid_z, decision_boundary=0.5):
     levels = [decision_boundary]
     cs = plt.contour(grid_x, grid_y, grid_z, levels=levels, colors='black', linestyles='dashed', linewidths=2)
     plt.clabel(cs, fontsize=20)
+
+
+# ------------------------------------------
+#  Sparse GP utils
+# ------------------------------------------
+
+
+def generate_animation(theta_steps, X_m_steps, X_test, f_true, X, y, sigma_y, phi_opt, q, interval=100):
+    fig, ax = plt.subplots()
+
+    line_func, = ax.plot(X_test, f_true, label='Latent function', c='k', lw=0.5)
+    pnts_ind = ax.scatter([], [], label='Inducing variables', c='m')
+
+    line_pred, = ax.plot([], [], label='Prediction', c='b')
+    area_pred = ax.fill_between([], [], [], label='Epistemic uncertainty', color='r', alpha=0.1)
+
+    ax.set_title('Optimization of a sparse Gaussian process')
+    ax.set_xlabel('x')
+    ax.set_ylabel('y')
+    ax.set_xlim(-1.5, 1.5)
+    ax.set_ylim(-3, 3.5)
+    ax.legend(loc='upper right')
+
+    def plot_step(i):
+        theta = theta_steps[i]
+        X_m = X_m_steps[i]
+
+        mu_m, A_m, K_mm_inv = phi_opt(theta, X_m, X, y, sigma_y)
+        f_test, f_test_cov = q(X_test, theta, X_m, mu_m, A_m, K_mm_inv)
+        f_test_var = np.diag(f_test_cov)
+        f_test_std = np.sqrt(f_test_var)
+
+        ax.collections.clear()
+        pnts_ind = ax.scatter(X_m, mu_m, c='m')
+
+        line_pred.set_data(X_test, f_test.ravel())
+        area_pred = ax.fill_between(X_test.ravel(),
+                                    f_test.ravel() + 2 * f_test_std,
+                                    f_test.ravel() - 2 * f_test_std,
+                                    color='r', alpha=0.1)
+
+        return line_func, pnts_ind, line_pred, area_pred
+
+    result = animation.FuncAnimation(fig, plot_step, frames=len(theta_steps), interval=interval)
+
+    # Prevent output of last frame as additional plot
+    plt.close()
+
+    return result
+
