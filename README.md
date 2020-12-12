@@ -1,6 +1,6 @@
 ## Bayesian machine learning notebooks
 
-[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.4050922.svg)](https://doi.org/10.5281/zenodo.4050922)
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.4318528.svg)](https://doi.org/10.5281/zenodo.4318528)
 
 This repository is a collection of notebooks about *Bayesian Machine Learning*. The following links display 
 some of the notebooks via [nbviewer](https://nbviewer.jupyter.org/) to ensure a proper rendering of formulas.
@@ -19,7 +19,7 @@ Dependencies are specified in `requirements.txt` files in subdirectories.
   Introduction to Gaussian processes for classification. Implementation with plain NumPy/SciPy as well as with scikit-learn. 
 
 - [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/krasserm/bayesian-machine-learning/blob/dev/gaussian-processes/gaussian_processes_sparse.ipynb)
-  [Sparse Gaussian processes](https://nbviewer.jupyter.org/github/krasserm/bayesian-machine-learning/blob/dev/gaussian-processes/gaussian_processes_sparse.ipynb). 
+  [Sparse Gaussian processes](https://nbviewer.jupyter.org/github/krasserm/bayesian-machine-learning/blob/wip-svgp/gaussian-processes/gaussian_processes_sparse.ipynb). 
   Introduction to sparse Gaussian processes using a variational approach. Example implementation with JAX. 
 
 - [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/krasserm/bayesian-machine-learning/blob/dev/bayesian-optimization/bayesian_optimization.ipynb)
