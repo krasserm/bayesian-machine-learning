@@ -19,7 +19,7 @@ Dependencies are specified in `requirements.txt` files in subdirectories.
   Introduction to Gaussian processes for classification. Implementation with plain NumPy/SciPy as well as with scikit-learn. 
 
 - [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/krasserm/bayesian-machine-learning/blob/dev/gaussian-processes/gaussian_processes_sparse.ipynb)
-  [Sparse Gaussian processes](https://nbviewer.jupyter.org/github/krasserm/bayesian-machine-learning/blob/wip-svgp/gaussian-processes/gaussian_processes_sparse.ipynb). 
+  [Sparse Gaussian processes](https://nbviewer.jupyter.org/github/krasserm/bayesian-machine-learning/blob/dev/gaussian-processes/gaussian_processes_sparse.ipynb). 
   Introduction to sparse Gaussian processes using a variational approach. Example implementation with JAX. 
 
 - [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/krasserm/bayesian-machine-learning/blob/dev/bayesian-optimization/bayesian_optimization.ipynb)
