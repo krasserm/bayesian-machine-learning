@@ -78,8 +78,7 @@ else:
                   loss=[vae_loss, 'categorical_crossentropy'],
                   loss_weights=[1.0, 20.0])
 
-    model.fit(x=x_train,
-              y=[x_train, y_train_cat],
+    model.fit((x_train, x_train, y_train_cat),
               epochs=15,
               shuffle=True,
               batch_size=batch_size,
