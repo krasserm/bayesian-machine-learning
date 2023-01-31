@@ -203,7 +203,7 @@ for a in alpha:
             train_kl_divergence_error = []
             test_kl_divergence_error = []
             predictor_losses = []
-            for epoch in range(1, 2):
+            for epoch in range(1, 100):
                 train(train_loss_list,mean_latent_error,random_latent_loss,
                         random_mean_1_latent_loss,train_recon_loss,train_kl_divergence_error,
                          predictor_losses ,epoch,alpha=a,beta=b,phi=p)
