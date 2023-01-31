@@ -106,7 +106,7 @@ def train(train_loss_list,mean_latent_error,random_latent_loss,
         optimizer.zero_grad()
         recon_batch, mu, log_var = vae(data)
         prediction = predictor(mu)
-        predictor_loss = categorical_cross_entropy_loss(prediction.float(), label)
+        predictor_loss = categorical_cross_entropy_loss(prediction.type(torch.DoubleTensor), label)
         _, encoded_mu_2, _ = vae(recon_batch)
         latent_error = latent_mse(mu, encoded_mu_2)
         latent_errors.append(phi*latent_error)
