@@ -71,6 +71,7 @@ class Predictor(nn.Module):
         return x
 
 def categorical_cross_entropy_loss(y_pred, y_true):
+    y_pred = torch.argmax(y_pred, dim = 1).detach()
     print('shape of prediction is {} and shape of label is {}'.format(y_pred.shape, y_true.shape))
     loss = F.binary_cross_entropy(y_pred, y_true, reduction='sum')
     return loss
