@@ -107,14 +107,14 @@ def train(train_loss_list,mean_latent_error,random_latent_loss,
         y_pred = torch.argmax(y_pred, dim = 1).detach().float()
         #y_pred = y_pred.cpu().detach().numpy()
         #y_pred = torch.Tensor(y_pred)
-        predictor_loss = latent_mse(y_pred, label)
+        p_loss = latent_mse(y_pred, label)
         _, encoded_mu_2, _ = vae(recon_batch)
         latent_error = latent_mse(mu, encoded_mu_2)
         latent_errors.append(phi*latent_error)
         recon_error = latent_mse(recon_batch, data.view(-1, 784))
         recon_errors.append(recon_error)
         loss, kld = loss_function(recon_batch, data, mu, log_var, alpha, beta)
-        loss = loss + phi*predictor_loss
+        loss = loss + phi*p_loss
         ####
         random_sample = torch.randn(100, 2) #.cuda()
         random_decoded = vae.decoder(random_sample) #.cuda()
@@ -129,14 +129,14 @@ def train(train_loss_list,mean_latent_error,random_latent_loss,
         loss.backward()
         train_loss += loss.item()
         kld_error += kld.item()
-        predictor_loss += predictor_loss.item()
+        predictor_loss += p_loss.item()
         optimizer.step()
         optimizer_predictor.step()
 
         if batch_idx % 100 == 0:
-            print('Train Epoch: {} [{}/{} ({:.0f}%)]\tLoss: {:.6f}'.format(
+            print('Train Epoch: {} [{}/{} ({:.0f}%)]\tLoss: {:.6f} Pred.Loss: {:.6f}'.format(
                 epoch, batch_idx * len(data), len(train_loader.dataset),
-                100. * batch_idx / len(train_loader), loss.item() / len(data)))
+                100. * batch_idx / len(train_loader), loss.item() / len(data), p_loss.item() / len(data)))
     print('====> Epoch: {} Average loss: {:.4f}'.format(epoch, train_loss / len(train_loader.dataset)))
     mean_latent_error.append((sum(latent_errors)/len(latent_errors)).item())
     random_latent_loss.append((sum(random_latent_error)/len(random_latent_error)).item())
