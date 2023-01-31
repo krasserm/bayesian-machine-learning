@@ -139,7 +139,6 @@ def train(train_loss_list,mean_latent_error,random_latent_loss,
                 100. * batch_idx / len(train_loader), loss.item() / len(data)))
     print('====> Epoch: {} Average loss: {:.4f}'.format(epoch, train_loss / len(train_loader.dataset)))
     mean_latent_error.append((sum(latent_errors)/len(latent_errors)).item())
-    predictor_losses.append((sum(predictor_loss)/len(predictor_loss)).item())
     random_latent_loss.append((sum(random_latent_error)/len(random_latent_error)).item())
     random_mean_1_latent_loss.append((sum(random_mean_1_latent_error)/len(random_mean_1_latent_error)).item())
     train_loss_list.append(train_loss / len(train_loader.dataset))
@@ -216,7 +215,6 @@ for a in alpha:
                                 'random_latent_loss': random_latent_loss,
                                 'random_mean_1_latent_loss': random_mean_1_latent_loss,
                                 'train_loss': train_loss_list,
-                                'train_predictor_loss': predictor_losses,
                                 'test_loss': test_loss_list,
                                 'train_reconstruction_mse_loss': train_recon_loss,
                                 'test_reconstruction_mse_loss': test_recon_loss,
