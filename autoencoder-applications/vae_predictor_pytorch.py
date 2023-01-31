@@ -71,7 +71,7 @@ class Predictor(nn.Module):
         return x
 
 def categorical_cross_entropy_loss(y_pred, y_true):
-    loss = -torch.mean(torch.sum(y_true * torch.log(y_pred), dim=1))
+    loss = F.binary_cross_entropy(y_pred, y_true, reduction='sum')
     return loss
 
 # return reconstruction error + KL divergence losses
