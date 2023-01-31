@@ -82,4 +82,4 @@ else:
               epochs=15,
               shuffle=True,
               batch_size=batch_size,
-              validation_data=(x_test, [x_test, y_test_cat]), verbose=2)
+              verbose=2)
