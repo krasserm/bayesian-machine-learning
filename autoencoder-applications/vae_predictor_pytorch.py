@@ -57,43 +57,56 @@ class VAE(nn.Module):
         z = self.sampling(mu, log_var)
         return self.decoder(z), mu, log_var
 
-# build model
-"""
-vae = VAE(x_dim=784, h_dim1= 512, h_dim2=256, z_dim=2)
-if torch.cuda.is_available():
-    vae.cuda()
+class Predictor(nn.Module):
+    def __init__(self, latent_dim):
+        super(Predictor, self).__init__()
+        self.fc1 = nn.Linear(latent_dim, 128)
+        self.fc2 = nn.Linear(128, 128)
+        self.fc3 = nn.Linear(128, 10)
 
-vae
+    def forward(self, x):
+        x = F.relu(self.fc1(x))
+        x = F.relu(self.fc2(x))
+        x = F.softmax(self.fc3(x), dim=1)
+        return x
 
-optimizer = optim.Adam(vae.parameters())
-"""
+def categorical_cross_entropy_loss(y_pred, y_true):
+    loss = -torch.mean(torch.sum(y_true * torch.log(y_pred), dim=1))
+    return loss
+
 # return reconstruction error + KL divergence losses
 def loss_function(recon_x, x, mu, log_var, alpha, beta):
     BCE = F.binary_cross_entropy(recon_x, x.view(-1, 784), reduction='sum')
     KLD = -0.5 * torch.sum(1 + log_var - mu.pow(2) - log_var.exp())
     return alpha*BCE + beta*KLD, KLD
 
-def train(train_loss_list,mean_latent_error,random_latent_loss, random_mean_1_latent_loss,train_recon_loss, train_kl_divergence_error,epoch, alpha, beta, phi):
+
+def train(train_loss_list,mean_latent_error,random_latent_loss,
+        random_mean_1_latent_loss,train_recon_loss, train_kl_divergence_error,predictor_losses,
+        epoch, alpha, beta, phi):
     vae.train()
+    predictor.train()
     train_loss = 0
+    predictor_loss = []
     latent_mse = nn.MSELoss()
     latent_errors = []
     recon_errors = []
     random_latent_error = []
     random_mean_1_latent_error = []
     kld_error = 0
-    for batch_idx, (data, _) in enumerate(train_loader):
+    for batch_idx, (data, label) in enumerate(train_loader):
         #data = data.cuda()
         optimizer.zero_grad()
-
         recon_batch, mu, log_var = vae(data)
+        prediction = predictor(mu)
+        predictor_loss = categorical_cross_entropy_loss(prediction, label)
         _, encoded_mu_2, _ = vae(recon_batch)
         latent_error = latent_mse(mu, encoded_mu_2)
         latent_errors.append(phi*latent_error)
         recon_error = latent_mse(recon_batch, data.view(-1, 784))
         recon_errors.append(recon_error)
         loss, kld = loss_function(recon_batch, data, mu, log_var, alpha, beta)
-        loss = loss + phi*latent_error
+        loss = loss + phi*predictor_loss
         ####
         random_sample = torch.randn(100, 2) #.cuda()
         random_decoded = vae.decoder(random_sample) #.cuda()
@@ -108,7 +121,9 @@ def train(train_loss_list,mean_latent_error,random_latent_loss, random_mean_1_la
         loss.backward()
         train_loss += loss.item()
         kld_error += kld.item()
+        predictor_loss += predictor_loss.item()
         optimizer.step()
+        optimizer_predictor.step()
 
         if batch_idx % 100 == 0:
             print('Train Epoch: {} [{}/{} ({:.0f}%)]\tLoss: {:.6f}'.format(
@@ -116,6 +131,7 @@ def train(train_loss_list,mean_latent_error,random_latent_loss, random_mean_1_la
                 100. * batch_idx / len(train_loader), loss.item() / len(data)))
     print('====> Epoch: {} Average loss: {:.4f}'.format(epoch, train_loss / len(train_loader.dataset)))
     mean_latent_error.append((sum(latent_errors)/len(latent_errors)).item())
+    predictor_losses.append((sum(predictor_loss)/len(predictor_loss)).item())
     random_latent_loss.append((sum(random_latent_error)/len(random_latent_error)).item())
     random_mean_1_latent_loss.append((sum(random_mean_1_latent_error)/len(random_mean_1_latent_error)).item())
     train_loss_list.append(train_loss / len(train_loader.dataset))
@@ -151,29 +167,23 @@ def test(test_loss_list,test_mean_latent_error,test_recon_loss,test_kl_divergenc
     test_recon_loss.append((sum(recon_errors)/len(recon_errors)).item())
     test_kl_divergence_error.append(kld_error)
 vae = VAE(x_dim=784, h_dim1= 512, h_dim2=256, z_dim=2)
-if torch.cuda.is_available():
-    vae.cuda()
-
-vae
+predictor = Predictor(latent_dim = 2)
 
 optimizer = optim.Adam(vae.parameters())
-
-
+optimizer_predictor = optim.Adam(predictor.parameters())
 alpha = [1]
-beta = [0.0001, 0.001, 0.01, 0.1, 0.5, 1, 3, 5, 10]
-#phi = [0,0.001, 0.005,0.01,0.05, 1,2,3,4,5,6,7,8,9,10]
-phi = [0]
+beta = [1]
+phi = [1,2,5,10,15,20]
 
 for a in alpha:
     for b in beta:
         for p in phi:
             print('Experiment with alpha={}, beta={}, phi = {}'.format(a,b,p))
             vae = VAE(x_dim=784, h_dim1= 512, h_dim2=256, z_dim=2)
-
-            if torch.cuda.is_available():
-                vae.cuda()
+            predictor = Predictor(latent_dim = 2)
 
             optimizer = optim.Adam(vae.parameters())
+            optimizer_predictor = optim.Adam(predictor.parameters())
             mean_latent_error = []
             test_mean_latent_error = []
             random_latent_loss = []
@@ -184,9 +194,13 @@ for a in alpha:
             test_recon_loss = []
             train_kl_divergence_error = []
             test_kl_divergence_error = []
+            predictor_losses = []
             for epoch in range(1, 100):
-                train(train_loss_list,mean_latent_error,random_latent_loss, random_mean_1_latent_loss,train_recon_loss,train_kl_divergence_error,epoch,alpha=a,beta=b,phi=p)
-                test(test_loss_list,test_mean_latent_error,test_recon_loss, test_kl_divergence_error,alpha=a, beta=b)
+                train(train_loss_list,mean_latent_error,random_latent_loss,
+                        random_mean_1_latent_loss,train_recon_loss,train_kl_divergence_error,
+                         predictor_losses ,epoch,alpha=a,beta=b,phi=p)
+                test(test_loss_list,test_mean_latent_error,test_recon_loss,
+                        test_kl_divergence_error,alpha=a, beta=b)
                 results = pd.DataFrame(
                                 {
                                 'mean_latent_error': mean_latent_error,
@@ -194,34 +208,17 @@ for a in alpha:
                                 'random_latent_loss': random_latent_loss,
                                 'random_mean_1_latent_loss': random_mean_1_latent_loss,
                                 'train_loss': train_loss_list,
+                                'train_predictor_loss': predictor_losses,
                                 'test_loss': test_loss_list,
                                 'train_reconstruction_mse_loss': train_recon_loss,
                                 'test_reconstruction_mse_loss': test_recon_loss,
                                 'train_kl_divergence_error': train_kl_divergence_error,
                                 'test_kl_divergence_error': test_kl_divergence_error
                                 })
-                results_file_name = 'experiments_with_beta_ld2/results_csv/results_alpha_{}_beta_{}_phi_{}.csv'.format(a,b,p)
+                results_file_name = 'results/results_csv/results_alpha_{}_beta_{}_phi_{}.csv'.format(a,b,p)
                 results.to_csv(results_file_name)
-            with torch.no_grad():
-                file_name = 'sample_alpha_{}_beta_{}_phi_{}.png'.format(a,b,p)
-                z = torch.randn(64,2) #.cuda()
-                sample = vae.decoder(z) #.cuda()
-                save_image(sample.view(64, 1, 28, 28), './experiments_with_beta_ld2/samples/' + file_name)
-            path = './experiments_with_beta_ld2/checkpoints/'
+            path = './results/checkpoints/'
             checkpoint_name = 'model_alpha_{}_beta_{}_phi_{}.pth'.format(a,b,p)
             full_path = path + checkpoint_name
             torch.save(vae.state_dict(), full_path)
             del vae
-"""
-with torch.no_grad():
-    for i in range(0,20):
-        out_file_name = "samples/img_{}.png".format(i)
-        z = torch.randn(1,2).cuda()
-        sample = vae.decoder(z).cuda()
-        img = plt.imshow(sample.reshape(28, 28).detach().cpu(), cmap = matplotlib.cm.binary)
-        plt.savefig(out_file_name)
-    z = torch.randn(64,2).cuda()
-    sample = vae.decoder(z).cuda()
-    #plt.savefig(sample.view(64, 1, 28, 28), './samples/sample_' + '.png')
-    save_image(sample.view(64, 1, 28, 28), './samples/sample_x' + '.png')
-"""
