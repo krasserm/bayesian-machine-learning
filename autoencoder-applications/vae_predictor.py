@@ -1,3 +1,13 @@
+import keras
+
+from keras import layers
+from keras.models import Model
+from variational_autoencoder_opt_util import *
+from keras.datasets import mnist
+from keras.utils import to_categorical
+from keras import backend as K
+from keras.models import load_model
+
 # Use pre-trained models by default
 use_pretrained = False
 
@@ -6,11 +16,6 @@ latent_dim = 2
 
 # Mini-batch size used for training
 batch_size = 64
-
-import keras
-
-from keras import layers
-from keras.models import Model
 
 def create_predictor():
     '''
@@ -25,7 +30,6 @@ def create_predictor():
 
     return Model(predictor_input, x, name='predictor')
 
-from variational_autoencoder_opt_util import *
 
 encoder = create_encoder(latent_dim)
 decoder = create_decoder(latent_dim)
@@ -39,24 +43,13 @@ t_decoded = decoder(t)
 t_predicted = predictor(t_mean)
 
 model = Model(x, [t_decoded, t_predicted], name='composite')
-
-
-from keras.datasets import mnist
-from keras.utils import to_categorical
-
 (x_train, y_train), (x_test, y_test) = mnist.load_data()
-
 x_train = x_train.astype('float32') / 255.
 x_train = x_train.reshape(x_train.shape + (1,))
 y_train_cat = to_categorical(y_train)
-
 x_test = x_test.astype('float32') / 255.
 x_test = x_test.reshape(x_test.shape + (1,))
 y_test_cat = to_categorical(y_test)
-
-
-from keras import backend as K
-from keras.models import load_model
 
 def vae_loss(x, t_decoded):
     '''
