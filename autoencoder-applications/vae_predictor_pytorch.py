@@ -131,7 +131,8 @@ def train(train_loss_list,mean_latent_error,random_latent_loss,
         kld_error += kld.item()
         predictor_loss += p_loss.item()
         optimizer.step()
-        optimizer_predictor.step()
+        if phi != 0:
+            optimizer_predictor.step()
 
         if batch_idx % 100 == 0:
             print('Train Epoch: {} [{}/{} ({:.0f}%)]\tLoss: {:.6f} Pred.Loss: {:.6f}'.format(
@@ -180,7 +181,7 @@ optimizer = optim.Adam(vae.parameters())
 optimizer_predictor = optim.Adam(predictor.parameters())
 alpha = [1]
 beta = [1]
-phi = [1,2,5,10,15,20]
+phi = [0,1,2,5,10,15,20]
 
 for a in alpha:
     for b in beta:
@@ -223,7 +224,7 @@ for a in alpha:
                                 })
                 results_file_name = 'results/results_csv/results_alpha_{}_beta_{}_phi_{}.csv'.format(a,b,p)
                 results.to_csv(results_file_name)
-            path = './results/checkpoints/'
+            path = 'results/checkpoints/'
             checkpoint_name = 'model_alpha_{}_beta_{}_phi_{}.pth'.format(a,b,p)
             full_path = path + checkpoint_name
             torch.save(vae.state_dict(), full_path)
