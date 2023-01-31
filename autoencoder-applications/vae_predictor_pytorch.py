@@ -103,7 +103,7 @@ def train(train_loss_list,mean_latent_error,random_latent_loss,
         optimizer.zero_grad()
         recon_batch, mu, log_var = vae(data)
         y_pred = predictor(mu)
-        y_pred = torch.argmax(y_pred, dim = 1).detach().float()
+        y_pred = torch.argmax(y_pred, dim = 1).detach().int64()
         print(y_pred.shape)
         print(y_pred)
         print(y_pred.dtype)
