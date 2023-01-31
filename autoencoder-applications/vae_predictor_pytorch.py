@@ -91,7 +91,7 @@ def train(train_loss_list,mean_latent_error,random_latent_loss,
     vae.train()
     predictor.train()
     train_loss = 0
-    predictor_loss = []
+    predictor_loss = 0
     latent_mse = nn.MSELoss()
     latent_errors = []
     recon_errors = []
