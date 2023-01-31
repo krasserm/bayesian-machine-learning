@@ -71,7 +71,7 @@ class Predictor(nn.Module):
         return x
 
 def categorical_cross_entropy_loss_v2(y_pred, y_true):
-    y_pred = torch.argmax(y_pred, dim = 1)
+
     print('shape of prediction is {} and shape of label is {}'.format(y_pred.shape, y_true.shape))
     loss = F.binary_cross_entropy(y_pred, y_true, reduction='sum')
     return loss
@@ -105,8 +105,9 @@ def train(train_loss_list,mean_latent_error,random_latent_loss,
         #data = data.cuda()
         optimizer.zero_grad()
         recon_batch, mu, log_var = vae(data)
-        prediction = predictor(mu)
-        predictor_loss = categorical_cross_entropy_loss(prediction.type(torch.DoubleTensor), label)
+        y_pred = predictor(mu)
+        y_pred = torch.argmax(y_pred, dim = 1)
+        predictor_loss = categorical_cross_entropy_loss(y_pred, label)
         _, encoded_mu_2, _ = vae(recon_batch)
         latent_error = latent_mse(mu, encoded_mu_2)
         latent_errors.append(phi*latent_error)
