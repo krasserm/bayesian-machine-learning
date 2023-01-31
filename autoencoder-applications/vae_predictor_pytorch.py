@@ -10,7 +10,7 @@ from matplotlib import pyplot as plt
 import pandas as pd
 import matplotlib
 import gc
-
+import numpy as np
 gc.collect()
 torch.cuda.empty_cache()
 
