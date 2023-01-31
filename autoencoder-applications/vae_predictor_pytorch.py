@@ -99,6 +99,7 @@ def train(train_loss_list,mean_latent_error,random_latent_loss,
         optimizer.zero_grad()
         recon_batch, mu, log_var = vae(data)
         prediction = predictor(mu)
+        print('shape of prediction is {} and shape of label is {}'.format(prediction.shape, label.shape))
         predictor_loss = categorical_cross_entropy_loss(prediction, label)
         _, encoded_mu_2, _ = vae(recon_batch)
         latent_error = latent_mse(mu, encoded_mu_2)
