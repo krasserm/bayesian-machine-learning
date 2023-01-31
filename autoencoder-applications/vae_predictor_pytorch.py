@@ -70,10 +70,15 @@ class Predictor(nn.Module):
         x = F.softmax(self.fc3(x), dim=1)
         return x
 
-def categorical_cross_entropy_loss(y_pred, y_true):
+def categorical_cross_entropy_loss_v2(y_pred, y_true):
     y_pred = torch.argmax(y_pred, dim = 1)
     print('shape of prediction is {} and shape of label is {}'.format(y_pred.shape, y_true.shape))
     loss = F.binary_cross_entropy(y_pred, y_true, reduction='sum')
+    return loss
+
+def categorical_cross_entropy_loss(y_pred, y_true):
+    y_pred = torch.argmax(y_pred, dim = 1)
+    loss = -torch.mean(torch.sum(y_true * torch.log(y_pred), dim=1))
     return loss
 
 # return reconstruction error + KL divergence losses
