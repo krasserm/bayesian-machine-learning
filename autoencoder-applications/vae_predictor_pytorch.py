@@ -106,6 +106,7 @@ def train(train_loss_list,mean_latent_error,random_latent_loss,
         optimizer.zero_grad()
         recon_batch, mu, log_var = vae(data)
         y_pred = predictor(mu)
+        print(y_pred.shape)
         y_pred = torch.argmax(y_pred, dim = 1)
         predictor_loss = categorical_cross_entropy_loss(y_pred, label)
         _, encoded_mu_2, _ = vae(recon_batch)
