@@ -77,7 +77,6 @@ def categorical_cross_entropy_loss_v2(y_pred, y_true):
     return loss
 
 def categorical_cross_entropy_loss(y_pred, y_true):
-    y_pred = torch.argmax(y_pred, dim = 1)
     loss = -torch.mean(torch.sum(y_true * torch.log(y_pred), dim=1))
     return loss
 
