@@ -107,6 +107,8 @@ def train(train_loss_list,mean_latent_error,random_latent_loss,
         y_pred = predictor(mu)
         y_pred = torch.argmax(y_pred, dim = 1).detach().float()
         print(y_pred.shape)
+        print(y_pred)
+        print(y_pred.dtype)
         #y_pred = y_pred.cpu().detach().numpy()
         #y_pred = torch.Tensor(y_pred)
         predictor_loss = categorical_cross_entropy_loss(y_pred, label)
