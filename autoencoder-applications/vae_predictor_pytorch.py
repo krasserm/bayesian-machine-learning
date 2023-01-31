@@ -104,6 +104,7 @@ def train(train_loss_list,mean_latent_error,random_latent_loss,
         recon_batch, mu, log_var = vae(data)
         y_pred = predictor(mu)
         y_pred = torch.argmax(y_pred, dim = 1).cpu().detach().numpy()
+        y_pred = y_pred.astype(np.int64)
         y_pred = torch.Tensor(y_pred)
         print(y_pred.shape)
         print(y_pred)
