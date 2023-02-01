@@ -123,4 +123,4 @@ if __name__ == '__main__':
     vae.load_state_dict(torch.load(model_path, map_location=torch.device('cpu')))
     encoded_data, latent_reconstructed_data, labels = test(experiment_name)
     filename = 'results/latent_space_vis/{}.png'.format(experiment_name)
-    plot(encoded_data, label, filename)
+    plot(encoded_data, labels, filename)
