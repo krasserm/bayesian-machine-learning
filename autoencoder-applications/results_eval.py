@@ -63,6 +63,13 @@ class VAE(nn.Module):
         z = self.sampling(mu, log_var)
         return self.decoder(z), mu, log_var
 
+def bce(recon_x, x):
+    """
+    used only for BCE
+    """
+    BCE = F.binary_cross_entropy(recon_x.view(-1, 784), x.view(-1, 784), reduction='mean')
+    #KLD = -0.5 * torch.sum(1 + log_var - mu.pow(2) - log_var.exp())
+    return BCE
 
 def test(experiment_name):
     """
@@ -80,27 +87,19 @@ def test(experiment_name):
     latent_reconstructed_data = pd.DataFrame()
     with torch.no_grad():
         for data, label in test_loader: ## change to test_loader
-            file_name = experiment_name + 'batch_{}.png'.format(i)
-            #save_image(data.view(100, 1, 28, 28), './lre_analysis/test_input/' + file_name)
-            i = i +1
-            #data = data.cuda()
+            #i = i + bs
             recon, mu, log_var = vae(data)
-            density = multivariate_normal.pdf(mu.cpu().numpy(), [0, 0], [[1, 0], [0, 1]])
-            density_list.append(density)
-            recon_error = bce(recon, data)
-            #save_image(recon.view(100, 1, 28, 28), './lre_analysis/test_reconstruction/' + file_name)
             _, encoded_mu_2, _ = vae(recon)
             latent_error  = latent_mse(mu, encoded_mu_2)
             latent_errors.append(latent_error)
-            recon_errors.append(recon_error)
             df_mu = pd.DataFrame(mu.cpu().numpy())
             df_mu_2 = pd.DataFrame(encoded_mu_2.cpu().numpy())
             encoded_data = pd.concat([encoded_data, df_mu])
             latent_reconstructed_data = pd.concat([latent_reconstructed_data, df_mu_2])
             df_label = pd.DataFrame(label.cpu().numpy())
             labels = pd.concat([labels, df_label])
-            if i == 10000:
-                break
+            #if i >= 10000:
+            #    break
     return encoded_data, latent_reconstructed_data, labels
 
 
